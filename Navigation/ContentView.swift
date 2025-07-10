@@ -18,12 +18,38 @@ struct ContentView: View {
             {
                 Text("This is the root view 🌲")
                 //Navigation link takes us to new UI, displaying text followed by destination
-                NavigationLink(destination: Text("You've arrived to the Second View 🎉")) {
-                    Text("Click me!") //changes link name
+                NavigationLink(destination: SecondView())
+                {
+                    Text("About")
+                        .foregroundColor(Color(hue: 0.477, saturation: 0.727, brightness: 0.79)) //changes link name
+                }
+                NavigationLink(destination: ThirdView())
+                    {
+                    Text("Contact")
+                }
+                NavigationLink(destination: FourthView()) {
+                    Text("Help")
+                        .foregroundColor(Color.purple)
+                
+                }
+                .toolbar //way to add toolbar to navigate
+                {
+    //ToolbarItemGroup(placement: .status) -> pushes bar to bottom
+                    NavigationLink(destination: SecondView())
+                    {
+                        Text("About")
+                    }
                 }
                 
             }
+            .navigationTitle("Home")
+            .navigationBarTitleDisplayMode(.inline)
+            /*This to make the title not be displayed:
+             .navigationBarHidden(true)
+             */
+            
         }
+        .padding()
     }
 }
 
